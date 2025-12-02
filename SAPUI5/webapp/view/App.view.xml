@@ -5,11 +5,15 @@
         <pages>
             <Page title="{i18n>appTitle}">
                 <content>
-                    <Button text="{i18n>showHelloButtonText}" press=".onShowHello"></Button>
-                    <Input value="{/recipient/name}"
-                        description="Hello {/recipient/name}"
-                        width="60%"
-                        valueLiveUpdate="true"></Input>
+                    <Panel headerText="{i18n>helloPanel}">
+                        <content>
+                            <Button text="{i18n>showHelloButtonText}" press=".onShowHello"></Button>
+                            <Input value="{/recipient/name}"
+                                description="Hello {/recipient/name}"
+                                width="60%"
+                                valueLiveUpdate="true"></Input>
+                        </content>
+                    </Panel>
                 </content>
             </Page>
         </pages>
