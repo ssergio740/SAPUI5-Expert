@@ -1,7 +1,8 @@
 // @ts-nocheck
 sap.ui.define([
     'sap/ui/core/mvc/Controller',
-    'sap/ui/model/json/JSONModel'
+    'sap/ui/model/json/JSONModel',
+    '../model/InvoicesFormatter'
 
 ],
  
@@ -9,12 +10,13 @@ sap.ui.define([
  * 
  * @param { typeof sap.ui.core.mvc.Controller} Controller 
  * @param { typeof sap.ui.model.json.JSONModel} JSONModel
+
  */
 
 
-function(Controller, JSONModel) {
+function(Controller, JSONModel,InvoicesFormater) {
     return Controller.extend("project1.SAPUI5.controller.InvoicesList",{
-
+        formatter : InvoicesFormater,
         onInit: function () {
             var oViewModel = new JSONModel({
                 usd:"USD",
