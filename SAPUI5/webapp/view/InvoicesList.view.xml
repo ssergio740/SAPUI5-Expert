@@ -5,7 +5,9 @@ xmlns="sap.m"
                 headerText="{i18n>invoiceListTitle}" 
                 class="sapUiResponsiveMargin"
                 width="auto" 
-                items="{invoices>/Invoices}">
+                items="{path : 'invoices>/Invoices',
+                        sorter : {path: 'ShipperName',
+                                    group: true}}">
                 <headerToolbar>
                     <Toolbar>
                         <Title text="{i18n>invoiceListTitle}"></Title>
