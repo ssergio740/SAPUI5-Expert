@@ -2,7 +2,9 @@
 sap.ui.define([
     'sap/ui/core/mvc/Controller',
     'sap/ui/model/json/JSONModel',
-    '../model/InvoicesFormatter'
+    '../model/InvoicesFormatter',
+    'sap/ui/model/Filter',
+    'sap/ui/model/FilterOperator'
 
 ],
  
@@ -10,11 +12,12 @@ sap.ui.define([
  * 
  * @param { typeof sap.ui.core.mvc.Controller} Controller 
  * @param { typeof sap.ui.model.json.JSONModel} JSONModel
-
+ * @param {typeof sap.ui.model.Filter} Filter
+ * * @param {typeof sap.ui.model.FilterOperator} FilterOperator
  */
 
 
-function(Controller, JSONModel,InvoicesFormater) {
+function(Controller, JSONModel,InvoicesFormater,Filter,FilterOperator) {
     return Controller.extend("project1.SAPUI5.controller.InvoicesList",{
         formatter : InvoicesFormater,
         onInit: function () {
@@ -24,6 +27,20 @@ function(Controller, JSONModel,InvoicesFormater) {
 
             });
             this.getView().setModel(oViewModel,"currency");
+
+        },
+
+        onFilterInvoices : function(oEvent) {
+            const aFilter = [];
+            const sQuery = oEvent.getParameter("query");
+
+            if (sQuery) {
+                aFilter.push( new Filter("ProductName",FilterOperator.Contains,sQuery));
+            };
+
+            const oList = this.getView().byId("invoiceList");
+            const oBinding = oList.getBinding("items");
+            oBinding.filter(aFilter);
 
         }
 

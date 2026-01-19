@@ -1,10 +1,19 @@
 <mvc:View controllerName="project1.SAPUI5.controller.InvoicesList"
 xmlns="sap.m"
             xmlns:mvc="sap.ui.core.mvc">
-            <List headerText="{i18n>invoiceListTitle}" 
+            <List id='invoiceList'
+                headerText="{i18n>invoiceListTitle}" 
                 class="sapUiResponsiveMargin"
                 width="auto" 
                 items="{invoices>/Invoices}">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="{i18n>invoiceListTitle}"></Title>
+                        <ToolbarSpacer ></ToolbarSpacer>
+                        <SearchField width="50%" search=".onFilterInvoices"></SearchField>
+                    </Toolbar>
+                    
+                </headerToolbar>
                 <items>
                     <ObjectListItem title="{invoices>Quantity} x {invoices>ProductName}"
                         number="{ parts: [{path:'invoices>ExtendedPrice'},
