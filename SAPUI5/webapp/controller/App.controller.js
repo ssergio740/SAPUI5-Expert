@@ -10,6 +10,12 @@ sap.ui.define([
         return Controller.extend("project1.SAPUI5.controller.App", {
             
             onInit: function (){
+            },
+
+            onOpenDialogHeader: function(){
+
+                this.getOwnerComponent().openHelloDialog();
             }
+
         });
     });
